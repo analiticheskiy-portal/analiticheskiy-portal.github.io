@@ -97,6 +97,20 @@ header .official-masthead{display:flex;justify-content:space-between;align-items
 
 .national-change-lines{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:14px}.national-change-lines .insight-change{margin-top:0;font-size:11px;line-height:1.5}
 
+/* Reporting period and legibility of the Vyzov family chart. */
+#analytics-challenge .challenge-chart-period{font-size:13px;line-height:1.5;color:#6b859b;margin:7px 0 0}
+#family-chart .donut-layout{display:grid;grid-template-columns:340px minmax(0,1fr);align-items:center;gap:48px;max-width:950px;margin:15px auto 25px}
+#family-chart .donut-visual{width:340px;height:340px;max-width:100%}
+#family-chart .donut-center strong{font-size:48px;font-weight:500}
+#family-chart .donut-center>span{font-size:15px;max-width:170px}
+#family-chart .donut-legend{max-width:none;width:100%;gap:24px}
+#family-chart .donut-legend>div{font-size:16px;line-height:1.6;gap:13px;grid-template-columns:10px 1fr auto}
+#family-chart .donut-legend i{width:10px;height:10px;margin-top:7px}
+#family-chart .donut-legend b{font-size:21px;font-weight:600}
+#family-chart .donut-legend small{font-size:14px}
+@media(max-width:850px){#family-chart .donut-layout{grid-template-columns:290px minmax(0,1fr);gap:25px}#family-chart .donut-visual{width:290px;height:290px}#family-chart .donut-legend>div{font-size:15px}}
+@media(max-width:650px){#family-chart .donut-layout{grid-template-columns:1fr;gap:25px}#family-chart .donut-visual{width:280px;height:280px;margin:auto}#family-chart .donut-center strong{font-size:42px}#family-chart .donut-legend{max-width:440px;margin:auto}#family-chart .donut-legend>div{font-size:15px}#family-chart .donut-legend b{font-size:19px}}
+
 </style>
   
 </head>
@@ -154,9 +168,9 @@ header .official-masthead{display:flex;justify-content:space-between;align-items
       <div class="analytics-context"><span><i></i> Проект «Вызов» · 14 регионов · по состоянию на 26.10.2026</span><a href="https://datalens.yandex/5mxg0a8wj7fcq?state=d4ee1e4a139&tab=yW" target="_blank" rel="noopener noreferrer">DataLens ↗</a></div>
       <div class="insight-module insight-challenge" id="challenge-metrics"></div>
       <div class="chart-grid challenge-grid">
-        <article class="panel chart-card"><div class="panel-heading"><div><span class="eyebrow">НАПРАВЛЕНИЯ ВЫБЫТИЯ</span><h2>Семейное устройство</h2></div><span class="chart-icon">◉</span></div><div id="family-chart"></div></article>
+        <article class="panel chart-card"><div class="panel-heading"><div><span class="eyebrow">НАПРАВЛЕНИЯ ВЫБЫТИЯ</span><h2>Семейное устройство</h2><p class="challenge-chart-period">Данные на сентябрь 2026</p></div><span class="chart-icon">◉</span></div><div id="family-chart"></div></article>
         
-        <article class="panel chart-card wide"><div class="panel-heading"><div><span class="eyebrow">ПОСТУПЛЕНИЕ И ВЫБЫТИЕ · ЧЕЛОВЕК</span><h2>Движение детей по регионам</h2></div><label class="chart-select">Показать <select id="movement-limit" aria-label="Количество регионов на графике"><option value="7">7 регионов</option><option value="14">Все 14 регионов</option></select></label></div><div class="chart-legend"><span><i style="background:#bcddef"></i>Поступило</span><span><i style="background:#237aca"></i>Выбыло</span><span class="legend-note">Справа: поступило − выбыло</span></div><div id="movement-chart"></div></article>
+        <article class="panel chart-card wide"><div class="panel-heading"><div><span class="eyebrow">ПОСТУПЛЕНИЕ И ВЫБЫТИЕ · ЧЕЛОВЕК</span><h2>Движение детей по регионам</h2><p class="challenge-chart-period">Данные на сентябрь 2026</p></div><label class="chart-select">Показать <select id="movement-limit" aria-label="Количество регионов на графике"><option value="7">7 регионов</option><option value="14">Все 14 регионов</option></select></label></div><div class="chart-legend"><span><i style="background:#bcddef"></i>Поступило</span><span><i style="background:#237aca"></i>Выбыло</span><span class="legend-note">Справа: поступило − выбыло</span></div><div id="movement-chart"></div></article>
       </div>
       
     </div>
