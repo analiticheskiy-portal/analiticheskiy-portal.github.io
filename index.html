@@ -172,7 +172,7 @@ dialog p{font-size:16px;line-height:1.65}.dialog-meta,dialog .status,.summary-to
   </nav></div>
 </header>
 <main id="main" class="wrap">
-  <section id="monitoring" class="view" aria-labelledby="monitoring-title">
+  <section id="monitoring" class="view" hidden aria-labelledby="monitoring-title">
     <div class="section-heading"><div><div class="eyebrow">ИНФОРМАЦИОННАЯ ПОВЕСТКА</div><h1 id="monitoring-title">Медиамониторинг</h1><p>Что происходит в регионах: публикации о детях, семье и защите их прав.</p></div><div class="period-pill">01 — 22 октября 2026</div></div>
     
     <article class="panel chart-card" id="media-regions-card"><div class="panel-heading"><div><span class="eyebrow">ТЕРРИТОРИИ В ФОКУСЕ</span><h2>Где больше публикаций</h2></div><span class="chart-unit">10 территорий</span></div><div id="media-regions"></div></article>
@@ -193,7 +193,7 @@ dialog p{font-size:16px;line-height:1.65}.dialog-meta,dialog .status,.summary-to
     
   </section>
 
-  <section id="statistics" class="view" hidden aria-labelledby="statistics-title">
+  <section id="statistics" class="view" aria-labelledby="statistics-title">
     <div class="section-heading"><div><div class="eyebrow">АНАЛИТИКА В ИНТЕРЕСАХ ДЕТСТВА</div><h1 id="statistics-title">Информационно-аналитические панели</h1><p>От масштаба системы — к конкретным изменениям в регионах.</p></div><div class="source-counter"><span class="live-dot"></span> Три направления аналитики</div></div>
     <p class="analytics-introduction">Тематические панели помогают анализировать ключевые направления профилактики социального сиротства: от общей картины по стране до результатов региональных проектов и ресурсов учреждений.</p>
     <div class="analytics-nav" role="tablist" aria-label="Направление аналитики">
@@ -467,9 +467,9 @@ const counts = (rows,key) => Object.entries(rows.reduce((a,r)=>(a[r[key]]=(a[r[k
 const sorted = [...records].sort((a,b)=>b.date.localeCompare(a.date)||b.time.localeCompare(a.time)||b.id-a.id);
 let mediaLimit = 6, archiveLimit = 12, filteredMedia=[];
 const views = ['monitoring','statistics','digests','archive'];
-let currentSection='monitoring';
+let currentSection='statistics';
 function route(){
-  const hash=location.hash.slice(1), section=views.includes(hash)?hash:(hash==='main'?currentSection:'monitoring');
+  const hash=location.hash.slice(1), section=views.includes(hash)?hash:(hash==='main'?currentSection:'statistics');
   currentSection=section;
   views.forEach(id=>$(id).hidden=id!==section);
   document.querySelectorAll('[data-nav]').forEach(a=>a.dataset.nav===section?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
