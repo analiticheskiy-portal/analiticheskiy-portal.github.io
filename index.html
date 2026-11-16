@@ -158,6 +158,8 @@ dialog p{font-size:16px;line-height:1.65}.dialog-meta,dialog .status,.summary-to
 @media(max-width:550px){.dashboard-description{padding:23px 20px;gap:18px;border-radius:12px}.dashboard-description-heading{padding-left:15px}.dashboard-description-heading h2{font-size:23px}.dashboard-description-copy p{font-size:15px}.dashboard-description-topics li{font-size:12px}.cards{grid-template-columns:1fr}.media-card{min-height:270px}.filters select{max-width:none}.filters>label:not(.search){min-width:0}.insight-stat-grid{column-gap:15px}.insight-stat>span{font-size:13px}.insight-stat strong{font-size:30px}.insight-change,.national-change-lines .insight-change{font-size:13px}.chart-data th,.chart-data td{padding:9px 7px;font-size:13px}.chart-legend{gap:12px}.archive-row{grid-template-columns:85px minmax(0,1fr) 20px;gap:10px}.archive-row .archive-category{grid-column:2}.archive-row .archive-title{grid-column:1/3}.digest-intro-panels p,.digest-intro-topics a{font-size:15px}}
 .monitoring-period-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;margin:0 0 15px;border:1px solid #d3e4ef;background:#eaf4fb;border-radius:10px}.monitoring-period-bar label{font-size:16px;font-weight:500;color:#285b7d}.monitoring-period-bar select{font:inherit;font-size:14px;color:#285b7d;border:1px solid #c9deed;border-radius:7px;background:white;padding:11px 14px;max-width:100%}@media(max-width:600px){.monitoring-period-bar{align-items:stretch;flex-direction:column}.monitoring-period-bar select{width:100%}}
 
+.monitoring-period-bar{justify-content:flex-start}
+
 </style>
   
 </head>
@@ -514,7 +516,7 @@ for(let start=new Date(meta.start+'T00:00:00Z');start.toISOString().slice(0,10)<
 }
 fortnights.reverse().forEach(({a,b,count})=>{const o=document.createElement('option');o.value=a+'|'+b;o.textContent=date(a)+' — '+date(b)+' · '+fmt(count);fortnightSelect.append(o);});
 const periodBar=document.createElement('div');periodBar.className='monitoring-period-bar';
-const periodLabel=document.createElement('label');periodLabel.htmlFor='media-period';periodLabel.textContent='Публикации по две недели';periodBar.append(periodLabel,fortnightSelect);document.querySelector('#monitoring .filters').before(periodBar);
+const periodLabel=document.createElement('label');periodLabel.htmlFor='media-period';periodLabel.textContent='Публикации по две недели';periodBar.append(fortnightSelect);document.querySelector('#monitoring .filters').before(periodBar);
 function renderMedia(reset=false){
   if(reset)mediaLimit=6;
   const q=$('media-search').value.trim().toLocaleLowerCase('ru');
