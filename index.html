@@ -472,7 +472,7 @@ let mediaLimit = 6, archiveLimit = 12, filteredMedia=[];
 const views = ['monitoring','statistics','digests','archive'];
 let currentSection='statistics';
 function route(){
-  const hash=location.hash.slice(1), section=views.includes(hash)?hash:(hash==='main'?currentSection:'statistics');
+  const hash=location.hash.slice(1), section=hash==='publications'?'monitoring':views.includes(hash)?hash:(hash==='main'?currentSection:'statistics');
   currentSection=section;
   views.forEach(id=>$(id).hidden=id!==section);
   document.querySelectorAll('[data-nav]').forEach(a=>a.dataset.nav===section?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
@@ -586,7 +586,7 @@ document.addEventListener('click',e=>{
  const row=e.target.closest('#topic-bars .bar-row, #media-regions .hbar-row');
  if(row){const kind=row.closest('#topic-bars')?'topic':'region',values=kind==='topic'?topicCounts.slice(0,5):counts(records.filter(r=>r.region!=='Не указан'),'region').slice(0,10);openMonitoringSummary(kind,values[[...row.parentElement.children].indexOf(row)][0]);}
  const button=e.target.closest('[data-summary-kind]');
- if(button){dialog.close();$('media-search').value='';$('media-region').value='';$('media-topic').value='';$(button.dataset.summaryKind==='region'?'media-region':'media-topic').value=button.dataset.summaryValue;renderMedia(true);location.hash='publications';$('publications').scrollIntoView({behavior:'smooth'});}
+ if(button){dialog.close();$('media-period').value='';$('media-search').value='';$('media-region').value='';$('media-topic').value='';$(button.dataset.summaryKind==='region'?'media-region':'media-topic').value=button.dataset.summaryValue;renderMedia(true);location.hash='publications';$('publications').scrollIntoView({behavior:'smooth'});}
 });
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('.summary-link')){e.preventDefault();e.target.click();}});
 document.querySelectorAll('.digest-intro-topics a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth',block:'start'});}));
